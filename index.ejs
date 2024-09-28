@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+   
+</head>
+<body>
+    <h1>Favourites</h1>
+    <form action="/cinemas" method="post">
+        
+            <button id="buttons" type="submit" value="Raging Bull" name="film">Raging Bull</button>
+            <button id="buttons" type="submit" value="The Godfather" name="film">The Godfather</button>
+            <button id="buttons" type="submit" value="Taxi Driver" name="film">Taxi Driver</button>
+
+        
+       
+    </form>
+    <div id="infocontain" class="hidden">
+        <% if(locals.cinemas) { %>
+        <h2 id="cinemaTitle"> <%= cinemas.name %> <%= cinemas.id%></h2>
+        <h3> Members : </h3>
+        <ul id="members">
+            <li>
+                Cast
+                <ul id="cast">
+                    
+                      <% index=0; %>
+                      <% for( let index = 0; index < cinemas.members.cast.length; index++ ) { %>
+                        <li><%= cinemas.members.cast[index] %></li>
+                      <% } %>
+                      
+                </ul>
+            </li>
+            <li>
+                Crew
+                <ul id="crew">
+                   
+                    <% for( let index = 0; index < cinemas.members.crew.length; index++ ) { %>
+                        <li><%= cinemas.members.crew[index] %></li>
+                      <% } %>   
+                </ul>
+            </li>
+        </ul>
+        <ul id="quotes">
+            <% for( let j = 0; j < cinemas.Quotes.length; j++ ) { %>
+                <li><%= cinemas.Quotes[j] %></li>
+            <% } %>
+        </ul>
+         <% } else { %>
+            <h2>Pick your favourite movies</h2>
+            <% } %>
+
+    </div>
+</body>
+</html>
